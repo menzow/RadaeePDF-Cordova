@@ -28,41 +28,41 @@ module.exports = function (ctx) {
 		return id;
     }
     
-  //   var ourconfigfile = path.join(ctx.opts.projectRoot, "config.xml");
-  //   var configXMLPath = "config.xml";
-  //   var data = fs.readFileSync(ourconfigfile, 'utf8');
+    var ourconfigfile = path.join(ctx.opts.projectRoot, "config.xml");
+    var configXMLPath = "config.xml";
+    var data = fs.readFileSync(ourconfigfile, 'utf8');
     
-  //   var replaceWith = getConfidId(data) + ".R";
+    var replaceWith = getConfidId(data) + ".R";
     
-  //   var platformRoot = path.join(ctx.opts.projectRoot, 'platforms/android');
-  //   var fileImportR = [
-  //   	{filePath: 'src/com/radaee/pdf/Global.java', importStatement: 'com.radaee.viewlib.R'},
-  //   	{filePath: 'src/com/radaee/reader/PDFCurlViewAct.java', importStatement: 'com.radaee.viewlib.R'},
-  //   	{filePath: 'src/com/radaee/reader/PDFLayoutView.java', importStatement: 'com.radaee.viewlib.R'},
-  //   	{filePath: 'src/com/radaee/reader/PDFNavAct.java', importStatement: 'com.radaee.viewlib.R'},
-  //   	{filePath: 'src/com/radaee/reader/PDFViewAct.java', importStatement: 'com.radaee.viewlib.R'},
-  //   	{filePath: 'src/com/radaee/reader/PDFViewController.java', importStatement: 'com.radaee.viewlib.R'},
-		// {filePath: 'src/com/radaee/reader/PDFPagerAct.java', importStatement: 'com.radaee.viewlib.R+'},
-  //   	{filePath: 'src/com/radaee/util/OutlineListAdt.java', importStatement: 'com.radaee.viewlib.R'},
-  //   	{filePath: 'src/com/radaee/util/PDFGridItem.java', importStatement: 'com.radaee.viewlib.R'},
-		// {filePath: 'src/com/radaee/util/PopupEditAct.java', importStatement: 'com.radaee.viewlib.R'}
-  //   ];
+    var platformRoot = path.join(ctx.opts.projectRoot, 'platforms/android');
+    var fileImportR = [
+    	{filePath: 'src/com/radaee/pdf/Global.java', importStatement: 'com.radaee.viewlib.R'},
+    	{filePath: 'src/com/radaee/reader/PDFCurlViewAct.java', importStatement: 'com.radaee.viewlib.R'},
+    	{filePath: 'src/com/radaee/reader/PDFLayoutView.java', importStatement: 'com.radaee.viewlib.R'},
+    	{filePath: 'src/com/radaee/reader/PDFNavAct.java', importStatement: 'com.radaee.viewlib.R'},
+    	{filePath: 'src/com/radaee/reader/PDFViewAct.java', importStatement: 'com.radaee.viewlib.R'},
+    	{filePath: 'src/com/radaee/reader/PDFViewController.java', importStatement: 'com.radaee.viewlib.R'},
+		{filePath: 'src/com/radaee/reader/PDFPagerAct.java', importStatement: 'com.radaee.viewlib.R'},
+    	{filePath: 'src/com/radaee/util/OutlineListAdt.java', importStatement: 'com.radaee.viewlib.R'},
+    	{filePath: 'src/com/radaee/util/PDFGridItem.java', importStatement: 'com.radaee.viewlib.R'},
+		{filePath: 'src/com/radaee/util/PopupEditAct.java', importStatement: 'com.radaee.viewlib.R'}
+    ];
 
 
-  //   console.log('*****************************************');
-  //   console.log('*       inject file R  ANDROID             *');
-  //   console.log('*****************************************');
-  //   console.log('*       Inject: ' + replaceWith + '    *');
+    console.log('*****************************************');
+    console.log('*       inject file R  ANDROID             *');
+    console.log('*****************************************');
+    console.log('*       Inject: ' + replaceWith + '    *');
     
-  //   fileImportR.forEach(function(val) {
-  //   	var fullfilename = path.join(platformRoot, val.filePath);
-  //   	console.log('*  Inject in file: ' + fullfilename + ' the import statemet: ' + val.importStatement + '  *');
-  //   	if (fs.existsSync(fullfilename)) {
-  //   		replace_string_in_file(fullfilename, val.importStatement, replaceWith);
-  //   	} else {
-  //           console.error('* missing file:', fullfilename);
-  //       }
-  //   });
+    fileImportR.forEach(function(val) {
+    	var fullfilename = path.join(platformRoot, val.filePath);
+    	console.log('*  Inject in file: ' + fullfilename + ' the import statemet: ' + val.importStatement + '  *');
+    	if (fs.existsSync(fullfilename)) {
+    		replace_string_in_file(fullfilename, val.importStatement, replaceWith);
+    	} else {
+            console.error('* missing file:', fullfilename);
+        }
+    });
 	
 	replace_string_in_file(path.join(platformRoot, 'src/com/radaee/reader/PDFViewController.java'), 'private int mNavigationMode = NAVIGATION_SEEK;', 'private int mNavigationMode = NAVIGATION_THUMBS;');
 	
