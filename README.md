@@ -2,7 +2,6 @@
 
 The repository has been forked from https://github.com/gearit/RadaeePDF-Cordova
 
-
 It contains sources for Android.
 
 ## License
