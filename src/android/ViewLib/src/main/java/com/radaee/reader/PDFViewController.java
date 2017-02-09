@@ -236,6 +236,11 @@ public class PDFViewController implements OnClickListener, SeekBar.OnSeekBarChan
 	}
 	public void OnAnnotTapped(Annotation annot)
 	{
+		if(annot != null && annot.GetType() == 2) {
+			m_view.PDFPerformAnnot();
+			return;
+		}
+		
 		switch(m_bar_status)
 		{
 		case BAR_NONE:
