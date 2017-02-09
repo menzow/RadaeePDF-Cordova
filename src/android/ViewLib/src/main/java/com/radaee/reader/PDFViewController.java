@@ -30,7 +30,7 @@ import com.radaee.util.OutlineList;
 import com.radaee.util.OutlineListAdt;
 import com.radaee.util.PDFThumbView;
 import com.radaee.view.PDFViewThumb;
-import com.radaee.viewlib.R;
+import nl.vbm.app.R;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -44,7 +44,7 @@ public class PDFViewController implements OnClickListener, SeekBar.OnSeekBarChan
 		public void OnCtrlSelect(boolean set);
 	}
 	private int m_bar_status = 0;
-	private int mNavigationMode = NAVIGATION_SEEK;
+	private int mNavigationMode = NAVIGATION_THUMBS;
 	static public final int BAR_NONE = 0;
 	static public final int BAR_CMD = 1;
 	static public final int BAR_ANNOT = 2;
@@ -234,13 +234,21 @@ public class PDFViewController implements OnClickListener, SeekBar.OnSeekBarChan
 	public void setNavigationMode(int navigationMode) {
 		mNavigationMode = navigationMode;
 	}
+
+
+
 	public void OnAnnotTapped(Annotation annot)
 	{
 		if(annot != null && annot.GetType() == 2) {
 			m_view.PDFPerformAnnot();
+			if(mNavigationMode == NAVIGATION_THUMBS 
+				&& m_thumb_view.BarGetView().getVisibility() != View.VISIBLE) {
+				m_thumb_view.BarShow();
+			}
 			return;
 		}
 		
+
 		switch(m_bar_status)
 		{
 		case BAR_NONE:
